@@ -44,13 +44,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Préparer les données pour EmailJS
         const templateParams = {
-            to_name: "Paul World Travel",
             name: form.querySelector('#name').value,
             email: form.querySelector('#email').value,
             phone: form.querySelector('#phone').value,
-            service_type: form.querySelector('#service').value,
-            country_interest: isCountryRequired() ? form.querySelector('#country').value : 'N/A',
-            message: form.querySelector('#message').value
+            service: form.querySelector('#service').value,
+            message: form.querySelector('#message').value,
+            country: isCountryRequired() ? form.querySelector('#country').value : 'Non applicable'
         };
 
         emailjs.send('service_2godl6y', 'template_mrmqx3b', templateParams)
