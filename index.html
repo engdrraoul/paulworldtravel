@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/form.css">
 </head>
 <body>
     <header class="header">
@@ -104,6 +105,7 @@
                             <h4>Services d'Immigration Internationale</h4>
                             <p class="service-description">Nous facilitons votre processus d'immigration vers plusieurs pays prestigieux. Notre équipe vous accompagne dans toutes les démarches, de la préparation du dossier jusqu'à l'obtention du visa.</p>
                             
+
                             <div class="countries-grid">
                                 <div class="country-item">
                                     <div class="country-header">
@@ -257,36 +259,59 @@
                             Samedi: 9h00 - 15h00</p>
                         </div>
                     </div>
-                    <form class="contact-form" action="mailto:paulworld2016@yahoo.com" method="post" enctype="text/plain">
+                    <form id="contactForm" class="contact-form" onsubmit="return handleSubmit(event)">
                         <div class="form-group">
-                            <input type="text" name="name" required>
-                            <label class="floating-label">Nom complet</label>
+                            <input type="text" name="name" id="name" required pattern="[A-Za-z\s]{2,}" title="Veuillez entrer un nom valide (minimum 2 caractères)">
+                            <label class="floating-label">Nom complet *</label>
+                            <span class="error-message"></span>
                         </div>
                         <div class="form-group">
-                            <input type="email" name="email" required>
-                            <label class="floating-label">Email</label>
+                            <input type="email" name="email" id="email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" title="Veuillez entrer une adresse email valide">
+                            <label class="floating-label">Email *</label>
+                            <span class="error-message"></span>
                         </div>
                         <div class="form-group">
-                            <input type="tel" name="phone" required>
-                            <label class="floating-label">Téléphone</label>
+                            <input type="tel" name="phone" id="phone" required pattern="[0-9+\s-]{8,}" title="Veuillez entrer un numéro de téléphone valide">
+                            <label class="floating-label">Téléphone *</label>
+                            <span class="error-message"></span>
                         </div>
                         <div class="form-group">
-                            <select name="service" required>
-                                <option value="">Sélectionnez un service</option>
+                            <select name="service" id="service" required onchange="toggleCountryField()">
+                                <option value="">Sélectionnez un service *</option>
                                 <option value="immigration">Immigration</option>
                                 <option value="accounting">Comptabilité</option>
                                 <option value="it">Services IT</option>
                                 <option value="customs">Douanes et Transit</option>
                             </select>
+                            <span class="error-message"></span>
+                        </div>
+                        <div class="form-group" id="countryGroup" style="display: none;">
+                            <select name="country" id="country">
+                                <option value="">Pays d'intérêt *</option>
+                                <option value="canada">Canada</option>
+                                <option value="usa">États-Unis</option>
+                                <option value="france">France</option>
+                                <option value="uk">Royaume-Uni</option>
+                                <option value="australia">Australie</option>
+                                <option value="other">Autre</option>
+                            </select>
+                            <span class="error-message"></span>
                         </div>
                         <div class="form-group">
-                            <textarea name="message" required></textarea>
-                            <label class="floating-label">Message</label>
+                            <textarea name="message" id="message" required minlength="10" title="Veuillez entrer un message d'au moins 10 caractères"></textarea>
+                            <label class="floating-label">Message *</label>
+                            <span class="error-message"></span>
                         </div>
-                        <button type="submit" class="submit-button">
-                            <span>Envoyer</span>
-                            <i class="fas fa-paper-plane"></i>
-                        </button>
+                        <div class="form-group">
+                            <button type="submit" class="submit-btn">
+                                <span class="btn-text">Envoyer</span>
+                                <span class="btn-icon"><i class="fas fa-paper-plane"></i></span>
+                            </button>
+                        </div>
+                        <div id="form-success" class="form-success hidden">
+                            <i class="fas fa-check-circle"></i>
+                            <p>Votre message a été envoyé avec succès ! Nous vous contacterons bientôt.</p>
+                        </div>
                     </form>
                 </div>
             </div>
@@ -322,5 +347,22 @@
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="script.js"></script>
+    <script src="js/form.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script>
+        (function() {
+            emailjs.init("OylbcHD9X1dCVCnrb");
+        })();
+        
+        function toggleCountryField() {
+            var service = document.getElementById('service').value;
+            var countryGroup = document.getElementById('countryGroup');
+            if (service === 'immigration') {
+                countryGroup.style.display = 'block';
+            } else {
+                countryGroup.style.display = 'none';
+            }
+        }
+    </script>
 </body>
 </html>
