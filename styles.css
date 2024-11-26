@@ -196,26 +196,16 @@ nav {
 }
 
 .about-text {
-    text-align: center;
-    max-width: 800px;
-    margin: 0 auto;
     padding: 2rem;
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
+    color: #333;
+    line-height: 1.6;
+    background: transparent;
 }
 
 .about-text p {
-    font-size: 1.2em;
-    line-height: 1.8;
-    color: #444;
-}
-
-.about-text .highlight {
-    color: #0056b3;
-    font-weight: 700;
-    font-size: 1.1em;
-    white-space: nowrap;
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
 }
 
 .stats-container {
