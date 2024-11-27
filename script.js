@@ -91,78 +91,100 @@ countryItems.forEach(item => {
     });
 });
 
-// Gestion du formulaire de contact avec validation
-const contactForm = document.getElementById('contactForm');
-const formInputs = contactForm.querySelectorAll('input, textarea, select');
+// Gestion du formulaire de contact
+function handleSubmit(event) {
+    event.preventDefault();
 
-formInputs.forEach(input => {
-    const label = document.createElement('span');
-    label.className = 'floating-label';
-    label.textContent = input.placeholder;
-    input.parentNode.insertBefore(label, input);
+    const form = event.target;
+    const formData = new FormData(form);
+    const formIsValid = validateForm(form);
 
-    input.addEventListener('focus', () => {
-        label.classList.add('active');
-    });
+    if (formIsValid) {
+        // Simuler l'envoi du formulaire (remplacer par votre logique d'envoi réelle)
+        showSuccessMessage();
+        form.reset();
+        return false;
+    }
 
-    input.addEventListener('blur', () => {
-        if (!input.value) {
-            label.classList.remove('active');
-        }
-    });
-});
+    return false;
+}
 
-contactForm.addEventListener('submit', async (e) => {
-    e.preventDefault();
-
-    // Validation du formulaire
+function validateForm(form) {
+    const requiredFields = form.querySelectorAll('[required]');
     let isValid = true;
-    const formData = {};
 
-    formInputs.forEach(input => {
-        formData[input.id] = input.value.trim();
-        if (!input.value.trim()) {
+    requiredFields.forEach(field => {
+        if (!field.value.trim()) {
             isValid = false;
-            input.classList.add('error');
+            showError(field, 'Ce champ est obligatoire');
         } else {
-            input.classList.remove('error');
+            clearError(field);
         }
     });
 
-    if (!isValid) {
-        showNotification('Veuillez remplir tous les champs', 'error');
-        return;
-    }
+    return isValid;
+}
 
-    // Validation de l'email
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(formData.email)) {
-        document.getElementById('email').classList.add('error');
-        showNotification('Veuillez entrer une adresse email valide', 'error');
-        return;
+function showError(field, message) {
+    const errorElement = field.parentElement.querySelector('.error-message');
+    if (errorElement) {
+        errorElement.textContent = message;
+        errorElement.style.display = 'block';
     }
+    field.classList.add('error');
+}
 
-    // Animation de chargement
-    const submitBtn = contactForm.querySelector('.submit-btn');
-    submitBtn.disabled = true;
-    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Envoi...';
-
-    try {
-        // Simulation d'envoi du formulaire
-        await new Promise(resolve => setTimeout(resolve, 1500));
-        
-        showNotification('Message envoyé avec succès!', 'success');
-        contactForm.reset();
-        formInputs.forEach(input => {
-            input.classList.remove('active');
-        });
-    } catch (error) {
-        showNotification('Une erreur est survenue', 'error');
-    } finally {
-        submitBtn.disabled = false;
-        submitBtn.innerHTML = 'Envoyer le message';
+function clearError(field) {
+    const errorElement = field.parentElement.querySelector('.error-message');
+    if (errorElement) {
+        errorElement.textContent = '';
+        errorElement.style.display = 'none';
     }
-});
+    field.classList.remove('error');
+}
+
+function showSuccessMessage() {
+    const successMessage = document.createElement('div');
+    successMessage.className = 'success-message';
+    successMessage.innerHTML = `
+        <div class="success-content">
+            <i class="fas fa-check-circle"></i>
+            <p>Message envoyé avec succès!</p>
+        </div>
+    `;
+
+    document.body.appendChild(successMessage);
+
+    setTimeout(() => {
+        successMessage.classList.add('show');
+    }, 100);
+
+    setTimeout(() => {
+        successMessage.classList.remove('show');
+        setTimeout(() => {
+            successMessage.remove();
+        }, 300);
+    }, 3000);
+}
+
+// Fonction pour gérer l'affichage du champ pays
+function toggleCountryField() {
+    const serviceSelect = document.getElementById('service');
+    const countryGroup = document.getElementById('countryGroup');
+    const countrySelect = document.getElementById('country');
+
+    if (serviceSelect.value === 'immigration') {
+        countryGroup.style.display = 'block';
+        countrySelect.required = true;
+    } else {
+        countryGroup.style.display = 'none';
+        countrySelect.required = false;
+        countrySelect.value = '';
+    }
+}
+
+const contactForm = document.getElementById('contactForm');
+contactForm.addEventListener('submit', handleSubmit);
 
 // Système de notification
 function showNotification(message, type) {
@@ -172,6 +194,7 @@ function showNotification(message, type) {
         <i class="fas ${type === 'success' ? 'fa-check-circle' : 'fa-exclamation-circle'}"></i>
         ${message}
     `;
+
     document.body.appendChild(notification);
 
     // Animation d'entrée
@@ -241,7 +264,7 @@ const header = document.querySelector('.header');
 
 window.addEventListener('scroll', () => {
     const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-    
+
     if (scrollTop > lastScrollTop) {
         // Scrolling down
         header.style.transform = 'translateY(-100%)';
@@ -249,7 +272,7 @@ window.addEventListener('scroll', () => {
         // Scrolling up
         header.style.transform = 'translateY(0)';
     }
-    
+
     lastScrollTop = scrollTop;
 });
 
@@ -282,7 +305,7 @@ window.addEventListener('scroll', () => {
     lastScroll = currentScroll;
 });
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     // Initialisation AOS
     AOS.init({
         duration: 800,
@@ -347,7 +370,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Menu mobile
     const mobileMenu = document.querySelector('.mobile-menu');
     const navLinks = document.querySelector('.nav-links');
-    
+
     mobileMenu.addEventListener('click', () => {
         navLinks.classList.toggle('active');
         mobileMenu.classList.toggle('active');
@@ -378,7 +401,7 @@ document.addEventListener('DOMContentLoaded', function() {
         e.preventDefault();
         const submitBtn = contactForm.querySelector('.submit-button');
         const originalText = submitBtn.innerHTML;
-        
+
         submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Envoi...';
         submitBtn.disabled = true;
 
@@ -414,9 +437,9 @@ document.addEventListener('DOMContentLoaded', function() {
             <i class="fas fa-${type === 'success' ? 'check-circle' : 'exclamation-circle'}"></i>
             <span>${message}</span>
         `;
-        
+
         document.body.appendChild(notification);
-        
+
         setTimeout(() => {
             notification.classList.add('show');
         }, 100);

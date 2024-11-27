@@ -15,7 +15,7 @@
         <section id="accueil" class="hero">
             <div class="hero-content" data-aos="fade-up">
                 <h1>Paul World Travel</h1>
-                <p class="tagline">Votre Partenaire de Confiance pour la Réussite Internationale</p>
+                <p class="tagline">Votre Partenaire de Confiance pour la Réussite de Votre Projet de Voyage à l'International</p>
                 <a href="#services" class="cta-button">Découvrir Nos Services</a>
             </div>
             <div class="hero-overlay"></div>
@@ -61,10 +61,11 @@
                     <div class="service-details">
                         <div class="service-item">
                             <h4>Création d'Entreprise</h4>
-                            <p>Nous vous accompagnons dans la création de votre entreprise, que ce soit une entreprise individuelle ou une SARL. Notre équipe d'experts vous guide à travers toutes les étapes administratives et légales.</p>
+                            <p>Nous vous accompagnons dans la création de votre entreprise. Notre équipe d'experts vous guide à travers toutes les étapes administratives et légales.</p>
                             <ul>
                                 <li>Création entreprise individuelle</li>
-                                <li>Création SARL</li>
+                                <li>Création d'une Société Anonyme à Responsabilité Limitée (SARL)</li>
+                                <li>Création d'une Société Anonyme (S.A)</li>
                                 <li>Montage DSF</li>
                                 <li>Montage business plan</li>
                                 <li>Suivi comptable et fiscal</li>
@@ -175,6 +176,51 @@
                                         </ul>
                                     </div>
                                 </div>
+
+                                <div class="country-item">
+                                    <div class="country-header">
+                                        <img src="https://flagcdn.com/w80/dk.png" alt="Drapeau du Danemark" class="flag-icon">
+                                        <h5>Danemark</h5>
+                                    </div>
+                                    <div class="country-content">
+                                        <ul>
+                                            <li>Visa étudiant</li>
+                                            <li>Visa travail</li>
+                                            <li>Regroupement familial</li>
+                                            <li>Résidence permanente</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="country-item">
+                                    <div class="country-header">
+                                        <img src="https://flagcdn.com/w80/lu.png" alt="Drapeau du Luxembourg" class="flag-icon">
+                                        <h5>Luxembourg</h5>
+                                    </div>
+                                    <div class="country-content">
+                                        <ul>
+                                            <li>Visa d'affaires</li>
+                                            <li>Permis de travail</li>
+                                            <li>Visa étudiant</li>
+                                            <li>Immigration qualifiée</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="country-item">
+                                    <div class="country-header">
+                                        <img src="https://flagcdn.com/w80/au.png" alt="Drapeau de l'Australie" class="flag-icon">
+                                        <h5>Australie</h5>
+                                    </div>
+                                    <div class="country-content">
+                                        <ul>
+                                            <li>Visa étudiant</li>
+                                            <li>Visa Working Holiday</li>
+                                            <li>Visa compétences</li>
+                                            <li>Immigration permanente</li>
+                                        </ul>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -194,7 +240,7 @@
                                 <li>Installation et paramétrage SAGE Gestion Commerciale</li>
                                 <li>Installation et paramétrage Sage Paie</li>
                                 <li>Consultation SAP S4 HANA</li>
-                                <li>Développement de sites web professionnels</li>
+                                <li>Développement de sites web professionnels en 48H</li>
                             </ul>
                         </div>
                     </div>
@@ -225,63 +271,35 @@
             <div class="container">
                 <h2>Contactez-nous</h2>
                 <div class="contact-wrapper">
-                    <div class="contact-info">
-                        <div class="info-item">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <div>
-                                <h4>Notre Bureau</h4>
-                                <p>Douala Ange Raphael<br>Face Hôtel Le Select</p>
-                            </div>
-                        </div>
-                        <div class="info-item">
-                            <i class="fab fa-whatsapp"></i>
-                            <div>
-                                <h4>WhatsApp</h4>
-                                <p><a href="https://wa.me/237694244666">+237 694 244 666</a></p>
-                            </div>
-                        </div>
-                        <div class="info-item">
-                            <i class="fas fa-envelope"></i>
-                            <div>
-                                <h4>Email</h4>
-                                <p><a href="mailto:paulworld2016@yahoo.com">paulworld2016@yahoo.com</a></p>
-                            </div>
-                        </div>
-                        <div class="business-hours">
-                            <h4>Heures d'ouverture</h4>
-                            <p>Lundi - Vendredi: 8h00 - 18h00<br>
-                            Samedi: 9h00 - 15h00</p>
-                        </div>
-                    </div>
                     <form id="contactForm" class="contact-form" onsubmit="return handleSubmit(event)">
                         <div class="form-group">
-                            <input type="text" name="name" id="name" required pattern="[A-Za-z\s]{2,}" title="Veuillez entrer un nom valide (minimum 2 caractères)">
-                            <label class="floating-label">Nom complet *</label>
+                            <input type="text" name="name" id="name" required pattern="[A-Za-z\s]{2,}" title="Veuillez entrer un nom valide (minimum 2 caractères)" placeholder=" ">
+                            <label class="floating-label">Nom complet</label>
                             <span class="error-message"></span>
                         </div>
                         <div class="form-group">
-                            <input type="email" name="email" id="email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" title="Veuillez entrer une adresse email valide">
-                            <label class="floating-label">Email *</label>
+                            <input type="email" name="email" id="email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" title="Veuillez entrer une adresse email valide" placeholder=" ">
+                            <label class="floating-label">Email</label>
                             <span class="error-message"></span>
                         </div>
                         <div class="form-group">
-                            <input type="tel" name="phone" id="phone" required pattern="[0-9+\s-]{8,}" title="Veuillez entrer un numéro de téléphone valide">
-                            <label class="floating-label">Téléphone *</label>
+                            <input type="tel" name="phone" id="phone" required pattern="[0-9+\s-]{8,}" title="Veuillez entrer un numéro de téléphone valide" placeholder=" ">
+                            <label class="floating-label">Téléphone</label>
                             <span class="error-message"></span>
                         </div>
                         <div class="form-group">
                             <select name="service" id="service" required onchange="toggleCountryField()">
-                                <option value="">Sélectionnez un service *</option>
+                                <option value="">Sélectionnez un service</option>
                                 <option value="immigration">Immigration</option>
-                                <option value="accounting">Comptabilité</option>
+                                <option value="accounting">Comptabilité et Fiscalité</option>
                                 <option value="it">Services IT</option>
                                 <option value="customs">Douanes et Transit</option>
                             </select>
                             <span class="error-message"></span>
                         </div>
                         <div class="form-group" id="countryGroup" style="display: none;">
-                            <select name="country" id="country">
-                                <option value="">Pays d'intérêt *</option>
+                            <select name="country" id="country" required>
+                                <option value="">Pays d'intérêt</option>
                                 <option value="canada">Canada</option>
                                 <option value="usa">États-Unis</option>
                                 <option value="france">France</option>
@@ -292,14 +310,14 @@
                             <span class="error-message"></span>
                         </div>
                         <div class="form-group">
-                            <textarea name="message" id="message" required minlength="10" title="Veuillez entrer un message d'au moins 10 caractères"></textarea>
-                            <label class="floating-label">Message *</label>
+                            <textarea name="message" id="message" required minlength="10" title="Veuillez entrer un message d'au moins 10 caractères" placeholder=" "></textarea>
+                            <label class="floating-label">Message</label>
                             <span class="error-message"></span>
                         </div>
                         <div class="form-group">
                             <button type="submit" class="submit-btn">
                                 <span class="btn-text">Envoyer</span>
-                                <span class="btn-icon"><i class="fas fa-paper-plane"></i></span>
+                                <i class="fas fa-paper-plane"></i>
                             </button>
                         </div>
                         <div id="form-success" class="form-success hidden">
@@ -314,27 +332,67 @@
 
     <footer>
         <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h4>Paul World Travel</h4>
-                    <p>Votre partenaire de confiance pour la réussite internationale</p>
+            <div class="footer-grid">
+                <div class="footer-section about">
+                    <h4>À propos de nous</h4>
+                    <p class="slogan">Votre partenaire de confiance pour la réussite de votre projet de voyage à l'international</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                    </div>
                 </div>
-                <div class="footer-section">
-                    <h4>Services</h4>
+
+                <div class="footer-section services">
+                    <h4>Nos Services</h4>
                     <ul>
-                        <li>Comptabilité et Fiscalité</li>
-                        <li>Immigration</li>
-                        <li>Solutions Informatiques</li>
-                        <li>Douane et Transit</li>
+                        <li><i class="fas fa-check"></i><span>Immigration</span></li>
+                        <li><i class="fas fa-check"></i><span>Comptabilité et Fiscalité</span></li>
+                        <li><i class="fas fa-check"></i><span>Solutions Informatiques</span></li>
+                        <li><i class="fas fa-check"></i><span>Douane et Transit</span></li>
                     </ul>
                 </div>
-                <div class="footer-section">
+
+                <div class="footer-section contact-info">
                     <h4>Contact</h4>
-                    <p>Email: paulworld2016@yahoo.com</p>
+                    <ul>
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Douala, Lendi<br>Entrée Commissaire</span>
+                        </li>
+                        <li>
+                            <i class="fab fa-whatsapp"></i>
+                            <span>
+                                <a href="https://wa.me/237694244666">+237 694 244 666</a><br>
+                                <a href="https://wa.me/14168303459">+1 416 830 3459</a>
+                            </span>
+                        </li>
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <span>
+                                <a href="mailto:paulworld2016@yahoo.com">paulworld2016@yahoo.com</a>
+                            </span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="footer-section hours">
+                    <h4>Heures d'ouverture</h4>
+                    <ul>
+                        <li>
+                            <i class="far fa-clock"></i>
+                            <span>
+                                Lun - Ven: 8h00 - 18h00<br>
+                                Sam: 9h00 - 15h00<br>
+                                Dim: Fermé
+                            </span>
+                        </li>
+                    </ul>
                 </div>
             </div>
+            
             <div class="footer-bottom">
-                <p>&copy; 2024 Paul World Travel. Site développé par Eng.dr Raoul</p>
+                <p>&copy; 2024 Paul World Travel</p>
             </div>
         </div>
     </footer>
